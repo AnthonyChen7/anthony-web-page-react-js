@@ -1,12 +1,10 @@
 import React from 'react';
-import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
-// https://alligator.io/react/react-burger-menu-sidebar/
+import { Menu, Sidebar } from 'semantic-ui-react';
 // https://react.semantic-ui.com/usage
 export default class SideBar extends React.Component {
 
   constructor(props) {
     super(props);
-    // TODO move visible state to be a part of the prop
     this.state = {
       visible: false
     };
@@ -23,21 +21,24 @@ export default class SideBar extends React.Component {
     });
   }
 
-  // TODO https://reactjs.org/docs/react-component.html#componentdidupdate
+  // https://reactjs.org/docs/react-component.html#componentdidupdate
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (prevProps.visible !== this.props.visible) {
+      this.setVisibility(this.props.visible);
+    }
+  }
 
   setVisibility (visible) {
     this.setState({
       visible: visible
     });
+    this.props.visibilityChanged(visible);
   }
 
   render() {
     return (
       <>
-      <Button 
-      onClick={ () => this.setVisibility(true) }>
-        Toggle sidebar visibililty
-      </Button>
       {/* <Sidebar.Pushable as={Segment}> */}
           <Sidebar
             as={Menu}
