@@ -22,6 +22,7 @@ export default class App extends React.Component {
         </Button>
         <SideBar 
           visible= {this.state.sideBarVisible}
+          menuItemIds = {['a', 'b', 'c']}
           visibilityChanged = { (visibile) => this.setVisibility(visibile) } />
       </React.Fragment>
     );

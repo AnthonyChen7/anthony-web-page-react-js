@@ -2,12 +2,6 @@ import React from 'react';
 import { Menu, Sidebar } from 'semantic-ui-react';
 // https://react.semantic-ui.com/usage
 
-// TODO remove
-const Ids = {
-  a: '1',
-  b: '2',
-  c: '3'
-};
 export default class SideBar extends React.Component {
 
   constructor(props) {
@@ -51,7 +45,7 @@ export default class SideBar extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.menuItemIds && this.props.menuItemIds.length > 0 ? (
       <>
       {/* <Sidebar.Pushable as={Segment}> */}
           <Sidebar
@@ -64,8 +58,7 @@ export default class SideBar extends React.Component {
             visible={this.state.visible}
             width='thin'
           >
-            {/* TODO set active boolean */}
-            <Menu.Item 
+            {/* <Menu.Item 
               as=''
               active = {this.state.activeId === Ids.a}
               onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.a) } }>
@@ -82,7 +75,15 @@ export default class SideBar extends React.Component {
               active = {this.state.activeId === Ids.c}
               onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.c) } }>
               Channels
-            </Menu.Item>
+            </Menu.Item> */}
+            {this.props.menuItemIds.map(menuItemId => 
+              <Menu.Item 
+              as=''
+              key={menuItemId}
+              active = {this.state.activeId === menuItemId}
+              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(menuItemId) } }>
+              {menuItemId}
+            </Menu.Item>)}
           </Sidebar>
 
           {/* <Sidebar.Pusher>
@@ -93,6 +94,6 @@ export default class SideBar extends React.Component {
           </Sidebar.Pusher> */}
         {/* </Sidebar.Pushable> */}
       </>
-    );
+    ) : null;
   }
 }
