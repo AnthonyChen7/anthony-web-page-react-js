@@ -1,10 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import SideBar from './widgets/side-bar/side-bar.js';
+
 function App() {
+  // https://reactjs.org/docs/fragments.html
   return (
-    <div>Hello World</div>
+    <React.Fragment>
+      <div>Hello World</div>
+      <SideBar />
+    </React.Fragment>
   );
 }
 
