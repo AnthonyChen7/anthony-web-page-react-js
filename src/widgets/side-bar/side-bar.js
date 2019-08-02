@@ -26,7 +26,7 @@ export default class SideBar extends React.Component {
       onClick={ () => this.toggleVisibility() }>
         Toggle sidebar visibililty
       </Button>
-      <Sidebar.Pushable as={Segment}>
+      {/* <Sidebar.Pushable as={Segment}> */}
           <Sidebar
             as={Menu}
             animation='overlay'
@@ -51,13 +51,13 @@ export default class SideBar extends React.Component {
             </Menu.Item>
           </Sidebar>
 
-          <Sidebar.Pusher>
+          {/* <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>Application Content</Header>
               <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
             </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+          </Sidebar.Pusher> */}
+        {/* </Sidebar.Pushable> */}
       </>
     );
   }
