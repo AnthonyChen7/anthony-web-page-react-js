@@ -1,12 +1,20 @@
 import React from 'react';
 import { Menu, Sidebar } from 'semantic-ui-react';
 // https://react.semantic-ui.com/usage
+
+// TODO remove
+const Ids = {
+  a: '1',
+  b: '2',
+  c: '3'
+};
 export default class SideBar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
+      activeId: undefined
     };
   }
   /**
@@ -36,6 +44,12 @@ export default class SideBar extends React.Component {
     this.props.visibilityChanged(visible);
   }
 
+  setActiveMenuItem(id) {
+    this.setState({
+      activeId: id
+    });
+  }
+
   render() {
     return (
       <>
@@ -45,7 +59,7 @@ export default class SideBar extends React.Component {
             animation='overlay'
             icon='labeled'
             inverted
-            onHide={() => this.setVisibility(false)}
+            onHide={() => {this.setVisibility(false)}}
             vertical
             visible={this.state.visible}
             width='thin'
@@ -53,17 +67,20 @@ export default class SideBar extends React.Component {
             {/* TODO set active boolean */}
             <Menu.Item 
               as=''
-              onClick = {() => this.setVisibility(false)}>
+              active = {this.state.activeId === Ids.a}
+              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.a) } }>
               Home
             </Menu.Item>
             <Menu.Item 
               as=''
-              onClick = {() => this.setVisibility(false)}>
+              active = {this.state.activeId === Ids.b}
+              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.b) } }>
               Games
             </Menu.Item>
             <Menu.Item 
               as=''
-              onClick = {() => this.setVisibility(false)}>
+              active = {this.state.activeId === Ids.c}
+              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.c) } }>
               Channels
             </Menu.Item>
           </Sidebar>
