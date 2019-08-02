@@ -12,10 +12,10 @@ export default class SideBar extends React.Component {
     };
   }
 
-  toggleVisibility () {
+  setVisibility (visible) {
     this.setState({
       ...this.state,
-      visible: !this.state.visible
+      visible: visible
     });
   }
 
@@ -23,7 +23,7 @@ export default class SideBar extends React.Component {
     return (
       <>
       <Button 
-      onClick={ () => this.toggleVisibility() }>
+      onClick={ () => this.setVisibility(true) }>
         Toggle sidebar visibililty
       </Button>
       {/* <Sidebar.Pushable as={Segment}> */}
@@ -32,20 +32,27 @@ export default class SideBar extends React.Component {
             animation='overlay'
             icon='labeled'
             inverted
-            onHide={() => this.toggleVisibility()}
+            onHide={() => this.setVisibility(false)}
             vertical
             visible={this.state.visible}
             width='thin'
           >
-            <Menu.Item as='a'>
+            {/* TODO set active boolean */}
+            <Menu.Item 
+              as=''
+              onClick = {() => this.setVisibility(false)}>
               <Icon name='home' />
               Home
             </Menu.Item>
-            <Menu.Item as='a'>
+            <Menu.Item 
+              as=''
+              onClick = {() => this.setVisibility(false)}>
               <Icon name='gamepad' />
               Games
             </Menu.Item>
-            <Menu.Item as='a'>
+            <Menu.Item 
+              as=''
+              onClick = {() => this.setVisibility(false)}>
               <Icon name='camera' />
               Channels
             </Menu.Item>
