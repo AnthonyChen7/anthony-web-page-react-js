@@ -8,7 +8,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sideBarVisible: false
+      sideBarVisible: false,
+      menuItemIds: ["1", "2", "3"]
     };
   }
 
@@ -22,8 +23,9 @@ export default class App extends React.Component {
         </Button>
         <SideBar 
           visible= {this.state.sideBarVisible}
-          menuItemIds = {['a', 'b', 'c']}
-          visibilityChanged = { (visibile) => this.setVisibility(visibile) } />
+          menuItemIds = {this.state.menuItemIds}
+          visibilityChanged = { (visibile) => this.setVisibility(visibile) } 
+          menuItemClicked = { (menuItemId) => this.onMenuItemClicked(menuItemId) } />
       </React.Fragment>
     );
   }
@@ -38,6 +40,10 @@ export default class App extends React.Component {
     this.setState({
       sideBarVisible: visible
     });
+  }
+
+  onMenuItemClicked(menuItemId) {
+    console.log(menuItemId);
   }
 
 }

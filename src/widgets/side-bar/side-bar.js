@@ -29,6 +29,9 @@ export default class SideBar extends React.Component {
     if (prevProps.visible !== this.props.visible) {
       this.setVisibility(this.props.visible);
     }
+    if (JSON.stringify(prevProps.menuItemIds) !== JSON.stringify(this.props.menuItemIds)) {
+      this.props.menuItemClicked(undefined);
+    }
   }
 
   setVisibility (visible) {
@@ -42,6 +45,7 @@ export default class SideBar extends React.Component {
     this.setState({
       activeId: id
     });
+    this.props.menuItemClicked(id);
   }
 
   render() {
@@ -58,24 +62,6 @@ export default class SideBar extends React.Component {
             visible={this.state.visible}
             width='thin'
           >
-            {/* <Menu.Item 
-              as=''
-              active = {this.state.activeId === Ids.a}
-              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.a) } }>
-              Home
-            </Menu.Item>
-            <Menu.Item 
-              as=''
-              active = {this.state.activeId === Ids.b}
-              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.b) } }>
-              Games
-            </Menu.Item>
-            <Menu.Item 
-              as=''
-              active = {this.state.activeId === Ids.c}
-              onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(Ids.c) } }>
-              Channels
-            </Menu.Item> */}
             {this.props.menuItemIds.map(menuItemId => 
               <Menu.Item 
               as=''
