@@ -11,10 +11,22 @@ export default class SideBar extends React.Component {
       visible: false
     };
   }
+  /**
+   * only called once
+   * no access to DOM or childfren refs
+   * init props and states are defined
+   * 
+   */
+  componentWillMount() {
+    this.setState({
+      visible: this.props.visible === undefined ? false : this.props.visible
+    });
+  }
+
+  // TODO https://reactjs.org/docs/react-component.html#componentdidupdate
 
   setVisibility (visible) {
     this.setState({
-      ...this.state,
       visible: visible
     });
   }
@@ -41,19 +53,16 @@ export default class SideBar extends React.Component {
             <Menu.Item 
               as=''
               onClick = {() => this.setVisibility(false)}>
-              <Icon name='home' />
               Home
             </Menu.Item>
             <Menu.Item 
               as=''
               onClick = {() => this.setVisibility(false)}>
-              <Icon name='gamepad' />
               Games
             </Menu.Item>
             <Menu.Item 
               as=''
               onClick = {() => this.setVisibility(false)}>
-              <Icon name='camera' />
               Channels
             </Menu.Item>
           </Sidebar>
