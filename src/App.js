@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import './App.css';
 import SideBar from './widgets/side-bar/side-bar.js';
 
@@ -17,10 +17,13 @@ export default class App extends React.Component {
     // https://reactjs.org/docs/fragments.html
     return (
       <React.Fragment>
-        <Button 
+        <div
+          className="menu-container"
           onClick={ () => this.toggleSidebarVisibility() }>
-          Toggle sidebar visibililty
-        </Button>
+          <Icon 
+            name='bars'
+            size={'large'}/>
+        </div>
         <SideBar 
           visible= {this.state.sideBarVisible}
           menuItemIds = {this.state.menuItemIds}

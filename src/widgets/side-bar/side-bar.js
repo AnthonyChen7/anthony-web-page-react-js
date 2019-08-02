@@ -29,7 +29,7 @@ export default class SideBar extends React.Component {
     if (prevProps.visible !== this.props.visible) {
       this.setVisibility(this.props.visible);
     }
-    if (JSON.stringify(prevProps.menuItemIds) !== JSON.stringify(this.props.menuItemIds)) {
+    if (JSON.stringify(prevProps.menuItemIds) !== JSON.stringify(this.props.menuItemIds) && this.props.menuItemClicked) {
       this.props.menuItemClicked(undefined);
     }
   }
@@ -38,7 +38,9 @@ export default class SideBar extends React.Component {
     this.setState({
       visible: visible
     });
-    this.props.visibilityChanged(visible);
+    if (this.props.visibilityChanged) {
+      this.props.visibilityChanged(visible);
+    }
   }
 
   setActiveMenuItem(id) {
@@ -65,6 +67,7 @@ export default class SideBar extends React.Component {
             {this.props.menuItemIds.map(menuItemId => 
               <Menu.Item 
               as=''
+              color = {'teal'}
               key={menuItemId}
               active = {this.state.activeId === menuItemId}
               onClick = {() => { this.setVisibility(false); this.setActiveMenuItem(menuItemId) } }>
