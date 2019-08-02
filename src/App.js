@@ -8,6 +8,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedMenuItem: undefined,
       sideBarVisible: false,
       menuItemIds: ["1", "2", "3"]
     };
@@ -46,7 +47,9 @@ export default class App extends React.Component {
   }
 
   onMenuItemClicked(menuItemId) {
-    console.log(menuItemId);
+    this.setState({
+      selectedMenuItem: menuItemId
+    });
   }
 
 }
