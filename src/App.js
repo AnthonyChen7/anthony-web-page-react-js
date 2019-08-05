@@ -58,30 +58,40 @@ export default class App extends React.Component {
           menuItemClicked = { (menuItemId) => this.onMenuItemClicked(menuItemId) } />
 
         <Menu fixed='top' inverted widths={5}>
-          <Menu.Item onClick={ () => this.toggleSidebarVisibility() }>
+          <Menu.Item
+            disabled = {this.state.sideBarVisible}
+            onClick={ () => this.toggleSidebarVisibility() }>
             <Icon 
                 name='bars'
                 size={'large'}/>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item
+            disabled = {this.state.sideBarVisible}>
             Anthony Chen
           </Menu.Item>
           <CopyToClipboard
             onCopy={(text, result) => this.onCopy(text, result)}
             text='achen7x7@gmail.com'>
-              <Menu.Item>
+              <Menu.Item
+                disabled = {this.state.sideBarVisible}>
                 <Icon name='mail'/>
                 <span ref={this.emailMenuItemRef}>achen7x7@gmail.com</span>
               </Menu.Item>
           </CopyToClipboard>
           
-          <Menu.Item href='https://github.com/AnthonyChen7' target='_blank'>
-            <Icon name='github' />
-            My Github
+          <Menu.Item 
+            href='https://github.com/AnthonyChen7'
+            target='_blank'
+            disabled = {this.state.sideBarVisible}>
+              <Icon name='github' />
+              My Github
           </Menu.Item>
-          <Menu.Item href='https://www.linkedin.com/in/anthony-chen-94a03a7b/' target='_blank' >
-            <Icon name='linkedin' />
-            My LinkedIn
+          <Menu.Item 
+            href='https://www.linkedin.com/in/anthony-chen-94a03a7b/'
+            target='_blank'
+            disabled = {this.state.sideBarVisible}>
+              <Icon name='linkedin' />
+              My LinkedIn
           </Menu.Item>
         </Menu>
       </React.Fragment>

@@ -27,7 +27,10 @@ export default class SideBar extends React.Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (prevProps.visible !== this.props.visible) {
-      this.setVisibility(this.props.visible);
+      // this.setVisibility(this.props.visible);
+      this.setState({
+        visible: this.props.visible
+      });
     }
     if (JSON.stringify(prevProps.menuItemIds) !== JSON.stringify(this.props.menuItemIds) && this.props.menuItemClicked) {
       this.props.menuItemClicked(undefined);
@@ -62,7 +65,7 @@ export default class SideBar extends React.Component {
             onHide={() => {this.setVisibility(false)}}
             vertical
             visible={this.state.visible}
-            width='thin'
+            width='wide'
           >
             {this.props.menuItemIds.map(menuItemId => 
               <Menu.Item 
