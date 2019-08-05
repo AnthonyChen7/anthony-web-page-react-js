@@ -57,8 +57,9 @@ export default class App extends React.Component {
           visibilityChanged = { (visibile) => this.setVisibility(visibile) } 
           menuItemClicked = { (menuItemId) => this.onMenuItemClicked(menuItemId) } />
 
-        <Menu fixed='top' inverted widths={5}>
+        <Menu fixed='top' widths={5}>
           <Menu.Item
+            className = {this.state.sideBarVisible ? 'no-pointer-event' : '' }
             disabled = {this.state.sideBarVisible}
             onClick={ () => this.toggleSidebarVisibility() }>
             <Icon 
@@ -66,6 +67,7 @@ export default class App extends React.Component {
                 size={'large'}/>
           </Menu.Item>
           <Menu.Item
+            className = {this.state.sideBarVisible ? 'no-pointer-event' : '' }
             disabled = {this.state.sideBarVisible}>
             Anthony Chen
           </Menu.Item>
@@ -73,20 +75,23 @@ export default class App extends React.Component {
             onCopy={(text, result) => this.onCopy(text, result)}
             text='achen7x7@gmail.com'>
               <Menu.Item
+                className = {this.state.sideBarVisible ? 'no-pointer-event' : '' }
                 disabled = {this.state.sideBarVisible}>
                 <Icon name='mail'/>
                 <span ref={this.emailMenuItemRef}>achen7x7@gmail.com</span>
               </Menu.Item>
           </CopyToClipboard>
           
-          <Menu.Item 
+          <Menu.Item
+            className = {this.state.sideBarVisible ? 'no-pointer-event' : '' }
             href='https://github.com/AnthonyChen7'
             target='_blank'
             disabled = {this.state.sideBarVisible}>
               <Icon name='github' />
               My Github
           </Menu.Item>
-          <Menu.Item 
+          <Menu.Item
+            className = {this.state.sideBarVisible ? 'no-pointer-event' : '' }
             href='https://www.linkedin.com/in/anthony-chen-94a03a7b/'
             target='_blank'
             disabled = {this.state.sideBarVisible}>
